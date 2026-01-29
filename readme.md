@@ -76,9 +76,3 @@ This portfolio is actively maintained as I complete new projects and gain furthe
 
 
 
-
-License:
------------------------
-
-This template is under Free License - https://www.themesine.com/license/
-
