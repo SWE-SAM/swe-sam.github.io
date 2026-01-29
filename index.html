@@ -1,947 +1,618 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html lang="en">
+<head>
+  <!-- Basics -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Sam Tran — Software Engineering student. Full-stack (Flask/React/Laravel), Python automation, databases, cloud deployment." />
+  <meta name="author" content="Sam Tran" />
 
-    <head>
-		<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <title>Sam Tran | Portfolio</title>
 
-        <!-- meta data -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <!-- Optional favicon (keep if you have it) -->
+  <link rel="icon" type="image/png" href="assets/logo/favicon.png" />
 
-        <!--font-family-->
-		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&amp;subset=devanagari,latin-ext" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #0b1020;
+      --card: rgba(255,255,255,.06);
+      --card-border: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.88);
+      --muted: rgba(255,255,255,.65);
+      --accent: #b636ff;
+      --accent2: #d92cf9;
+    }
+
+    html, body { height: 100%; }
+    body{
+      font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1000px 500px at 10% 10%, rgba(182,54,255,.20), transparent 60%),
+        radial-gradient(800px 400px at 90% 20%, rgba(217,44,249,.16), transparent 60%),
+        linear-gradient(180deg, #070a14 0%, var(--bg) 60%, #070a14 100%);
+      color: var(--text);
+    }
+
+    a { color: var(--text); text-decoration: none; }
+    a:hover { color: #fff; }
+
+    .navbar{
+      backdrop-filter: blur(10px);
+      background: rgba(10,15,30,.65);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .brand-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.6rem;
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+    .brand-dot{
+      width:10px;height:10px;border-radius:50%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 20px rgba(182,54,255,.35);
+    }
+
+    .hero{
+      padding-top: 6.5rem;
+      padding-bottom: 3.5rem;
+    }
+    .hero h1{
+      font-weight: 700;
+      line-height: 1.05;
+    }
+    .hero .lead{
+      color: var(--muted);
+      max-width: 52rem;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:.5rem;
+      padding:.45rem .75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .btn-accent{
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border: 0;
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(182,54,255,.20);
+    }
+    .btn-accent:hover{
+      filter: brightness(1.05);
+      color: #fff;
+    }
+    .btn-outline-glow{
+      border: 1px solid rgba(255,255,255,.20);
+      background: rgba(255,255,255,.03);
+      color: #fff;
+    }
+    .btn-outline-glow:hover{
+      border-color: rgba(255,255,255,.35);
+      background: rgba(255,255,255,.06);
+      color: #fff;
+    }
+
+    .section{
+      padding: 3.25rem 0;
+    }
+    .section-title{
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
+    .section-subtitle{
+      color: var(--muted);
+      margin-top: .4rem;
+      max-width: 55rem;
+    }
+
+    .card-glass{
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      box-shadow: 0 18px 40px rgba(0,0,0,.22);
+    }
+
+    .tag{
+      display:inline-block;
+      padding: .25rem .55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: .85rem;
+      margin: .2rem .25rem 0 0;
+      white-space: nowrap;
+    }
+
+    .muted { color: var(--muted); }
+
+    .project-img{
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+
+    .footer{
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(10,15,30,.55);
+      padding: 1.5rem 0;
+    }
+
+    .small-link{ color: var(--muted); }
+    .small-link:hover{ color: #fff; }
+
+    .divider{
+      height: 1px;
+      background: rgba(255,255,255,.10);
+      margin: 1.2rem 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand brand-badge" href="#top" aria-label="Go to top">
+        <span class="brand-dot"></span>
+        <span>Sam Tran</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+              aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="d-flex gap-2 ms-lg-3">
+          <!-- Keep this path. Put your PDF here: /assets/download/resume-web.pdf -->
+          <a class="btn btn-sm btn-outline-glow" href="/assets/download/resume-web.pdf" target="_blank" rel="noopener">
+            <i class="bi bi-file-earmark-text me-1"></i> Resume
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <span class="pill"><i class="bi bi-code-slash"></i> Full-stack</span>
+            <span class="pill"><i class="bi bi-braces"></i> Python automation</span>
+            <span class="pill"><i class="bi bi-database"></i> SQL & data</span>
+            <span class="pill"><i class="bi bi-cloud"></i> Cloud deployment</span>
+          </div>
+
+          <h1 class="display-4 mb-3">
+            Sam Tran
+          </h1>
+
+          <p class="lead mb-4">
+            Software Engineering student building professional systems: full-stack web apps (Flask/React/Laravel),
+            automation with Python, database-backed features, and cloud deployments. Also exploring Cloud DevOps. Aspiring Travel Vlogger.
+            
+          </p>
+
+          <div class="d-flex flex-wrap gap-2">
+            <a class="btn btn-accent btn-lg" href="/assets/download/resume-web.pdf" target="_blank" rel="noopener">
+              <i class="bi bi-file-earmark-arrow-down me-2"></i> View Resume (PDF)
+            </a>
+            <a class="btn btn-outline-glow btn-lg" href="https://github.com/SWE-SAM" target="_blank" rel="noopener">
+              <i class="bi bi-github me-2"></i> GitHub
+            </a>
+            <a class="btn btn-outline-glow btn-lg" href="https://www.linkedin.com/in/sam-tran-408110347/" target="_blank" rel="noopener">
+              <i class="bi bi-linkedin me-2"></i> LinkedIn
+            </a>
+          </div>
+
+          <div class="divider"></div>
+
+          <p class="muted mb-0">
+            UK • Open to internships / placements / junior roles •
+            <a class="small-link" href="mailto:officialsamtran@hotmail.com">officialsamtran@hotmail.com</a>
+          </p>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="card-glass p-4">
+            <h2 class="h5 mb-3">Quick Facts</h2>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2"><i class="bi bi-check2-circle me-2"></i> Full-stack: Flask, React, Laravel</li>
+              <li class="mb-2"><i class="bi bi-check2-circle me-2"></i> Automation: Python, Selenium</li>
+              <li class="mb-2"><i class="bi bi-check2-circle me-2"></i> Databases: PostgreSQL / MySQL / SQL Server</li>
+              <li class="mb-2"><i class="bi bi-check2-circle me-2"></i> Tools: Git, Azure, Testing</li>
+            </ul>
+
+            <div class="divider"></div>
+
+            <p class="muted mb-2">If you only click one thing:</p>
+            <a class="btn btn-accent w-100" href="#projects">
+              <i class="bi bi-lightning-charge me-2"></i> See Projects
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">
         
-        <!-- title of site -->
-        <title>Sam Tran's Portfolio</title>
+      </p>
 
-        <!-- For favicon png -->
-		<link rel="shortcut icon" type="image/icon" href="assets/logo/favicon.png"/>
-       
-        <!--font-awesome.min.css-->
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+      <div class="row g-4 mt-2">
 
-		<!--flat icon css-->
-		<link rel="stylesheet" href="assets/css/flaticon.css">
+        <!-- Project 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card-glass h-100 overflow-hidden">
+            <!-- Replace image path with yours (optional) -->
+            <img class="project-img" src="assets/images/portfolio/inventory.png" alt="Inventory Management System preview">
+            <div class="p-4">
+              <h3 class="h5 mb-2">Inventory Management System</h3>
+              <p class="muted mb-3">
+                Full-stack inventory + order tracking with authentication and database-backed reporting.
+              </p>
+              <div class="mb-3">
+                <span class="tag">Laravel</span>
+                <span class="tag">PHP</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Bootstrap</span>
+              </div>
+              <div class="d-flex gap-2">
+                <a class="btn btn-outline-glow btn-sm" href="https://github.com/JianFGO/Inventory-Management-System" target="_blank" rel="noopener">
+                  <i class="bi bi-github me-1"></i> Code
+                </a>
+                <!-- Add a live demo link if you have one -->
+                <!-- <a class="btn btn-accent btn-sm" href="https://your-demo-link" target="_blank" rel="noopener">
+                  <i class="bi bi-box-arrow-up-right me-1"></i> Demo
+                </a> -->
+              </div>
+            </div>
+          </div>
+        </div>
 
-		<!--animate.css-->
-        <link rel="stylesheet" href="assets/css/animate.css">
+        <!-- Project 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card-glass h-100 overflow-hidden">
+            <img class="project-img" src="assets/images/portfolio/cms.jpg" alt="CMS preview">
+            <div class="p-4">
+              <h3 class="h5 mb-2">Complaint Management System (BaaS)</h3>
+              <p class="muted mb-3">
+                React application with primary features for managing customer complaints, backed by a Firebase SDK BaaS. Project for demonstrating software architecture and design patterns.
+              </p>
+              <div class="mb-3">
+                <span class="tag">React</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Firebase SDK</span>
+                <span class="tag">Node.JS</span>
+              </div>
+              <div class="d-flex gap-2">
+                <a class="btn btn-outline-glow btn-sm" href="https://github.com/SWE-SAM/Complaint-Management-System" target="_blank" rel="noopener">
+                  <i class="bi bi-github me-1"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <!--owl.carousel.css-->
-        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-		<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-		
-        <!--bootstrap.min.css-->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-		
-		<!-- bootsnav -->
-		<link rel="stylesheet" href="assets/css/bootsnav.css" >	
+        <!-- Project 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card-glass h-100 overflow-hidden">
+            <img class="project-img" src="assets/images/portfolio/animalai.png" alt="Animal Vision AI preview">
+            <div class="p-4">
+              <h3 class="h5 mb-2">Animal Vision AI (API Integration)</h3>
+              <p class="muted mb-3">
+                Integrated a vision API into a workflow to classify/analyze images and return structured results.
+              </p>
+              <div class="mb-3">
+                <span class="tag">Python</span>
+                <span class="tag">Azure AI</span>
+                <span class="tag">REST</span>
+                <span class="tag">Automation</span>
+              </div>
+              <div class="d-flex gap-2">
+                <a class="btn btn-outline-glow btn-sm" href="https://github.com/SWE-SAM/animal-vision-ai" target="_blank" rel="noopener">
+                  <i class="bi bi-github me-1"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-4">
+        <a class="small-link" href="https://github.com/SWE-SAM" target="_blank" rel="noopener">
+          See more on GitHub <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <p class="section-subtitle">
         
-        <!--style.css-->
-        <link rel="stylesheet" href="assets/css/style.css">
+      </p>
+
+      <div class="row g-4 mt-2">
+
+        <!-- Elanco -->
+        <div class="col-lg-6">
+          <div class="card-glass p-4 h-100">
+            <div class="d-flex justify-content-between flex-wrap gap-2">
+              <div>
+                <h3 class="h5 mb-1">Full-Stack Developer</h3>
+                <div class="muted">Elanco • Jan 2025 – Mar 2025</div>
+              </div>
+              <span class="pill"><i class="bi bi-geo-alt"></i> London, UK</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <ul class="mb-0">
+              <li class="mb-2">Worked on a full-stack web app using <strong>Flask</strong> (REST APIs) and <strong>React</strong>, focusing on integration and data handling.</li>
+              <li class="mb-2">Built Python automation scripts integrating AI models/APIs to streamline workflows.</li>
+              <li class="mb-2">Deployed to <strong>Azure</strong> and collaborated via Jira in an Agile team (sprints, stand-ups, retros).</li>
+              <li class="mb-0">Wrote unit tests to reduce regressions and increase reliability.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Pro Check-Up -->
+        <div class="col-lg-6">
+          <div class="card-glass p-4 h-100">
+            <div class="d-flex justify-content-between flex-wrap gap-2">
+              <div>
+                <h3 class="h5 mb-1">Software Intern</h3>
+                <div class="muted">Pro Check-Up • Mar 2023 – Aug 2023</div>
+              </div>
+              <span class="pill"><i class="bi bi-geo-alt"></i> London, UK</span>
+            </div>
+
+            <div class="divider"></div>
+
+            <ul class="mb-0">
+              <li class="mb-2">Built a Python-based search system to improve database query and retrieval workflows.</li>
+              <li class="mb-2">Profiled and debugged performance bottlenecks; improved reliability and responsiveness.</li>
+              <li class="mb-2">Automated extraction from dynamic + static pages with <strong>Selenium</strong> and <strong>BeautifulSoup</strong>.</li>
+              <li class="mb-0">Worked with <strong>PostgreSQL</strong> for storage, indexing, and query optimization.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <p class="section-subtitle">
         
-        <!--responsive.css-->
-        <link rel="stylesheet" href="assets/css/responsive.css">
+      </p>
+
+      <div class="row g-4 mt-2">
+        <div class="col-md-6 col-lg-3">
+          <div class="card-glass p-4 h-100">
+            <h3 class="h6 mb-3">Languages</h3>
+            <div>
+              <span class="tag">Python</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">C#</span>
+              <span class="tag">PHP</span>
+              <span class="tag">SQL</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card-glass p-4 h-100">
+            <h3 class="h6 mb-3">Frameworks</h3>
+            <div>
+              <span class="tag">Flask</span>
+              <span class="tag">React</span>
+              <span class="tag">Laravel</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Bootstrap</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card-glass p-4 h-100">
+            <h3 class="h6 mb-3">Databases</h3>
+            <div>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">SQL Server</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card-glass p-4 h-100">
+            <h3 class="h6 mb-3">Tools</h3>
+            <div>
+              <span class="tag">Git</span>
+              <span class="tag">Azure</span>
+              <span class="tag">Selenium</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">Unit Testing</span>
+              <span class="tag">Agile</span>
+			  <span class="tag">Jira</span>
+			  <span class="tag">Postman</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="section">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <p class="section-subtitle">
         
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		
-        <!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+      </p>
 
-    </head>
-	
-	<body>
-		<!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-		
-		<!-- top-area Start -->
-		<header class="top-area">
-			<div class="header-area">
-				<!-- Start Navigation -->
-			    <nav class="navbar navbar-default bootsnav navbar-fixed dark no-background">
+      <div class="row g-4 mt-2">
+        <div class="col-lg-6">
+          <div class="card-glass p-4 h-100">
+            <h3 class="h5 mb-1">BEng Software Engineering / Computer Science</h3>
+            <div class="muted">Sheffield, UK • 2023 – 2027</div>
+            <div class="divider"></div>
+            <p class="muted mb-0">Second-year student. Focus: full-stack development, databases, automation, and software engineering practices.</p>
+          </div>
+        </div>
 
-			        <div class="container">
+        <div class="col-lg-6">
+          <div class="card-glass p-4 h-100">
+            <h3 class="h5 mb-1">A-Levels</h3>
+            <div class="muted">UK</div>
+            <div class="divider"></div>
+            <p class="muted mb-0">Computer Science, Physics, Mathematics.</p>
+          </div>
+        </div>
+      </div>
 
-			            <!-- Start Header Navigation -->
-			            <div class="navbar-header">
-			                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-			                    <i class="fa fa-bars"></i>
-			                </button>
-			                <a class="navbar-brand" href="index.html">Sam Tran - Portfolio</a>
-			            </div><!--/.navbar-header-->
-			            <!-- End Header Navigation -->
+    </div>
+  </section>
 
-			            <!-- Collect the nav links, forms, and other content for toggling -->
-			            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
-			                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-			                <li class=" smooth-menu active"></li>
-								<li class="smooth-menu"><a href="#experience">experience</a></li>			                    
-			                    <li class="smooth-menu"><a href="#skills">skills</a></li>
-			                    <li class=" smooth-menu"><a href="#education">education</a></li>
-			                    <!-- <li class="smooth-menu"><a href="#profiles">profile</a></li> -->
-			                    <li class="smooth-menu"><a href="#portfolio">portfolio</a></li>
-			                    <!-- <li class="smooth-menu"><a href="#clients">clients</a></li> -->
-			                    <li class="smooth-menu"><a href="#contact">contact</a></li>
-			                </ul><!--/.nav -->
-			            </div><!-- /.navbar-collapse -->
-			        </div><!--/.container-->
-			    </nav><!--/nav-->
-			    <!-- End Navigation -->
-			</div><!--/.header-area-->
-
-		    <div class="clearfix"></div>
-
-		</header><!-- /.top-area-->
-		<!-- top-area End -->
-	
-		<!--welcome-hero start -->
-		<!-- <section id="welcome-hero" class="welcome-hero">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<div class="header-text">
-							<h2>hi <span>,</span> i'm <br> Sam <br> Tran <span>.</span>   </h2>
-							<p>Software Engineer, Front/Backend Dev, Student</p>
-							<a href="assets/download/resume-web.pdf" download>download resume</a>
-						</div><!--/.header-text-->
-					</div><!--/.col-->
-				</div><!-- /.row-->
-			</div><!-- /.container-->
-
-		<!-- </section>/.welcome-hero --> -->
-		<!--welcome-hero end -->
-
-		<!--about start -->
-		<section id="about" class="about">
-			<div class="section-heading text-center">
-				<div>
-					<h2></h2>
-					<h2>about me</h2>
-				</div>
-			</div>
-			<div class="container">
-				<div class="about-content">
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="single-about-txt">
-								<h3>Hi, I'm Sam Tran,</h3>
-								<div>	
-									<h3>
-									I am a second-year Computer Science student from the UK with a strong background in both front-end and back-end development. I have experience working with PHP frameworks, as well as developing applications in C#. Alongside my technical expertise, I have a deep interest in philosophy, which I study part-time. Originally from Vietnam, I bring a diverse perspective to both my technical and academic pursuits.
-									</h3>
-									<p>
-										With a strong foundation in both front-end and back-end development, I have gained experience working with PHP frameworks and modern web technologies, alongside developing applications in C#. My technical expertise is complemented by my interest in philosophy, which I study part-time, exploring topics in logic, metaphysics, and ethics from a Catholic Christian perspective.
-	
-										Beyond academics and coding, I am deeply passionate about sports, particularly volleyball and badminton. I played as a libero for my college nationals, where I developed teamwork, agility, and strategic thinking under high-pressure situations—skills that translate well into my problem-solving approach in tech.
-	
-										While I am currently studying in the UK, my ultimate dream is to return to Vietnam, where I aspire to contribute to the tech industry and build a life that bridges my cultural heritage with my professional ambitions.
-									</p>
-								</div>
-								
-								<div class="row">
-									<div class="col-sm-4">
-										<div class="single-about-add-info">
-											<div class="header-text">
-												<div class="col-md-12 text-center">
-													<a href="assets/download/resume-web.pdf" download>download resume</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-offset-1 col-sm-5">
-							<div class="single-about-img">
-								<img src="assets/images/about/me.jpg" alt="me">
-								<div class="about-list-icon">
-									<ul>
-										<li>
-											<a href="https://www.facebook.com/profile.php?id=100009874442944">
-												<i  class="fa fa-facebook" aria-hidden="true"></i>
-											</a>
-										</li><!-- / li -->										
-										<li>
-											<a href="https://x.com/samtran0">
-												<i  class="fa fa-twitter" aria-hidden="true"></i>
-											</a>
-											
-										</li><!-- / li -->
-										<li>
-											<a href="https://www.linkedin.com/in/sam-tran-408110347/">
-												<i  class="fa fa-linkedin" aria-hidden="true"></i>
-											</a>
-										</li><!-- / li -->
-										<li>
-											<a href="https://github.com/SWE-SAM"><box-icon type='logo' name='github'></box-icon> </a>
-										</li><!-- / li -->
-										
-										
-									</ul><!-- / ul -->
-								</div><!-- /.about-list-icon -->
-
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</section><!--/.about-->
-		<!--about end -->
-		
-		<!--experience start -->
-		<section id="experience" class="experience">
-			<div class="section-heading text-center">
-				<h2>experience</h2>
-			</div>
-			<div class="container">
-				<div class="experience-content">
-						<div class="main-timeline">
-							<ul>
-								<li>
-									<div class="single-timeline-box fix">
-										<div class="row">
-											<div class="col-md-5">
-												<div class="experience-time text-right">
-													<h2>02/2021 - 07/2021</h2>
-													<h3>Salon Receptionist/Assistant</h3>
-												</div><!--/.experience-time-->
-											</div><!--/.col-->
-											<div class="col-md-offset-1 col-md-5">
-												<div class="timeline">
-													<div class="timeline-content">
-														<h4 class="title">
-															<span><i class="fa fa-circle" aria-hidden="true"></i></span>
-															Trendy Nails Portsmouth
-														</h4>
-														<h5>Portsmout, UK</h5>
-														<p class="description">
-															Provided exceptional customer service by handling inquiries through the business
-															social media whilst managing bookings using Microsoft Excel and Spreadsheets.
-															Handledcashtransactions using POS systemsandmaintainedthestorestandards
-															to ensure smoothandprofessional operation														</p>
-													</div><!--/.timeline-content-->
-												</div><!--/.timeline-->
-											</div><!--/.col-->
-										</div>
-									</div><!--/.single-timeline-box-->
-								</li>
-
-								<li>
-									<div class="single-timeline-box fix">
-										<div class="row">
-											<div class="col-md-offset-1 col-md-5 experience-time-responsive">
-												<div class="experience-time">
-													<h2>
-														<span><i class="fa fa-circle" aria-hidden="true"></i></span>
-														
-													</h2>
-													<h3></h3>
-												</div><!--/.experience-time-->
-											</div><!--/.col-->
-											<div class="col-md-5">
-												<div class="timeline">
-													<div class="timeline-content text-right">
-														<h4 class="title">
-															Pro CheckUp, London 
-														</h4>
-														<h5>London, UK</h5>
-														<p class="description">Developed and implemented a custom search engine to optimize database queries and improve data retrieval efficiency using C# for backend logic and SQL for database optimization. Designed an algorithm to rank search results and improve query execution.</p>
-
-														<ul class="description">
-															<li>C# (Backend Logic): Developed an API endpoint to handle search requests, implemented asynchronous processing, and used LINQ queries for dynamic filtering.</li>
-															<li>SQL (Database Optimization): Optimized query structures by refining JOIN operations to efficiently combine data from multiple tables. Created indexes and stored procedures to speed up frequent queries.</li>
-															<li>Python (Data Processing & Automation): Used Python to analyze query performance logs and identify bottlenecks. Wrote scripts for data cleanup and preprocessing to improve search accuracy.</li>
-														</ul>
-
-
-													</div><!--/.timeline-content-->
-												</div><!--/.timeline-->
-											</div><!--/.col-->
-											<div class="col-md-offset-1 col-md-5 experience-time-main">
-												<div class="experience-time">
-													<h2>
-														<span><i class="fa fa-circle" aria-hidden="true"></i></span>
-														11/2022- 4/2023
-													</h2>
-													<h3>Software Intern</h3>
-												</div><!--/.experience-time-->
-											</div><!--/.col-->
-										</div>
-									</div><!--/.single-timeline-box-->
-								</li>
-
-								<li>
-									<div class="single-timeline-box fix">
-										<div class="row">
-											<div class="col-md-5">
-												<div class="experience-time text-right">
-													<h2>09/2024- 12/2024</h2>
-													<h3>Software Project</h3>
-												</div><!--/.experience-time-->
-											</div><!--/.col-->
-											<div class="col-md-offset-1 col-md-5">
-												<div class="timeline">
-													<div class="timeline-content">
-														<h4 class="title">
-															<span><i class="fa fa-circle" aria-hidden="true"></i></span>
-															Candy Atlas, UK
-														</h4>
-														<h5>Sheffield, UK</h5>
-														<p class="description">Designed and developed a web-based inventory management system using HTML, CSS, JavaScript, Laravel, and SQL. Implemented core features for inventory tracking, user authentication, and reporting. Followed Agile Scrum methodology for iterative development and tested functionality using PHPUnit.</p>
-
-														<ul class="description">
-															<li>HTML, CSS, JavaScript: Created a responsive front-end interface with interactive elements for managing inventory and user interactions.</li>
-															<li>Laravel & SQL: Developed the backend using Laravel, implementing database models, controllers, and API endpoints. Optimized SQL queries for efficient data retrieval and storage.</li>
-															<li>PHPUnit Testing: Wrote and executed unit tests to ensure code reliability and prevent regressions.</li>
-															<li>Agile Scrum: Followed Scrum practices, including sprint planning, daily stand-ups, and retrospective meetings to ensure smooth project progression.</li>
-														</ul>
-												</div><!--/.timeline-->
-											</div><!--/.col-->
-										</div>
-									</div><!--/.single-timeline-box-->
-								</li>
-
-								<li>
-									<div class="single-timeline-box fix">
-										<div class="row">
-											<div class="col-md-offset-1 col-md-5 experience-time-responsive">
-												<div class="experience-time">
-													<h2>
-														<span><i class="fa fa-circle" aria-hidden="true"></i></span>
-														07/2024 - Today
-													</h2>
-													<h3>Media Server Developer</h3>
-												</div><!--/.experience-time-->
-											</div><!--/.col-->
-											<div class="col-md-5">
-												<div class="timeline">
-													<div class="timeline-content text-right">
-														<h4 class="title">
-															Discord, Instagram
-														</h4>
-														<h5></h5>
-														<p class="description">
-															Assisted in developing and setting up an AI-powered Discord bot using Python (discord.py) and OpenAI API, designed to interact with a server of nearly 2,000 members. Contributed to streamlining automated responses and integrating custom features to enhance user engagement and improve overall functionality. Ensured smooth operation by troubleshooting issues and optimizing performance for real-time interactions.														</p>
-													</div><!--/.timeline-content-->
-												</div><!--/.timeline-->
-											</div><!--/.col-->
-											<div class="col-md-offset-1 col-md-5 experience-time-main">
-												<div class="experience-time">
-													<h2>
-														<span><i class="fa fa-circle" aria-hidden="true"></i></span>
-														.
-													</h2>
-													<h3>.</h3>
-												</div><!--/.experience-time-->
-											</div><!--/.col-->
-										</div>
-									</div><!--/.single-timeline-box-->
-								</li>
-
-								<li>
-									<div class="single-timeline-box fix">
-										<div class="row">
-											<div class="col-md-5">
-												<div class="experience-time text-right">
-													<h2> 01/2025</h2>
-													<h3>Software Project</h3>
-												</div><!--/.experience-time-->
-											</div><!--/.col-->
-											<div class="col-md-offset-1 col-md-5">
-												<div class="timeline">
-													<div class="timeline-content">
-														<h4 class="title">
-															<span><i class="fa fa-circle" aria-hidden="true"></i></span>
-															Elanco, UK
-														</h4>
-														<h5>London, UK</h5>
-														<ul class="description">
-															<li>Developed a full-stack web application using Laravel, integrating Azure AI for pet image analysis.</li>
-															<li>Implemented Python scripts to process images through Azure AI, enabling accurate diagnosis.</li>
-															<li>Designed RESTful API endpoints to facilitate secure data exchange between the AI model and frontend.</li>
-															<li>Created UI/UX wireframes in MockPlus, ensuring an intuitive experience for users.</li>
-															<li>Used JavaScript and AJAX for real-time interactions, improving responsiveness.</li>
-															<li>Wrote PHPUnit tests to enhance reliability and prevent regressions.</li>
-															<li>Collaborated in Agile Scrum sprints, ensuring timely development and delivery.</li>
-														</ul>
-																												</div><!--/.timeline-content-->
-												</div><!--/.timeline-->
-											</div><!--/.col-->
-										</div>
-									</div><!--/.single-timeline-box-->
-								</li>
-
-							</ul>
-						</div><!--.main-timeline-->
-					</div><!--.experience-content-->
-			</div>
-
-		</section><!--/.experience-->
-		<!--experience end -->
-
-		<!--skills start -->
-		<section id="skills" class="skills">
-				<div class="skill-content">
-					<div class="section-heading text-center">
-						<h2>skills</h2>
-						
-					<div class="container">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="single-skill-content">
-									<div class="barWrapper">
-										<span class="progressText">Front End Development</span>
-										<p>HTML,CSS,JavaScript(Animations), React.JS</p>
-										<div class="single-progress-txt">
-											<div class="progress ">
-												<!-- <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="10" aria-valuemax="100" style="">
-												</div> -->
-											</div>
-											<!-- <h3>90%</h3>	 -->
-										</div>
-									</div><!-- /.barWrapper -->
-									<div class="barWrapper">
-										<span class="progressText">Python</span>
-										<p>Automation & Script Writing (With Selenium), Machine Learning (NumPy)</p>
-										<div class="single-progress-txt">
-											<div class="progress ">
-											   <!-- <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="10" aria-valuemax="100" style="">
-												    
-											   </div> -->
-											</div>
-											<!-- <h3>85%</h3>	 -->
-										</div>
-									</div><!-- /.barWrapper -->
-									<div class="barWrapper">
-										<span class="progressText">UI/UX Design</span>
-										<p>Figma, MockPlus (Wireframe Design)</p>
-										<div class="single-progress-txt">
-											<div class="progress ">
-											   <!-- <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="10" aria-valuemax="100" style="">
-												   
-											   </div> -->
-											</div>
-											<!-- <h3>50%</h3>	 -->
-										</div>
-									</div><!-- /.barWrapper -->
-									<div class="barWrapper">
-										<span class="progressText">API & AI Develpment </span>
-										<p>Python (discord.py), OpenAI API, Azure AI API, Node.JS</p>
-										<div class="single-progress-txt">
-											<div class="progress ">
-											   <!-- <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="10" aria-valuemax="100" style="">
-												    
-											   </div> -->
-											</div>
-											<!-- <h3>45%</h3>	 -->
-										</div>
-									</div><!-- /.barWrapper -->
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="single-skill-content">
-									<div class="barWrapper">
-										<span class="progressText">Back End Development</span>
-										<p>PHP (FrameWorks inc. Laravel),SQL</p>
-										<div class="single-progress-txt">
-											<div class="progress ">
-												<!-- <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="10" aria-valuemax="100" style="">
-													
-												</div> -->
-											</div>
-											<!-- <h3>90%</h3>	 -->
-										</div>
-									</div><!-- /.barWrapper -->
-									<div class="barWrapper">
-										<span class="progressText">C#</span>
-										<p>Web Development (With ASP.NET), Desktop Applications(Winforms)</p>
-										<div class="single-progress-txt">
-											<div class="progress ">
-											   <!-- <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="10" aria-valuemax="100" style="">
-												    
-											   </div> -->
-											</div>
-											<!-- <h3>70%</h3>	 -->
-										</div>
-									</div><!-- /.barWrapper -->
-									<div class="barWrapper">
-										<span class="progressText">Database and Data Engineering</span>
-										<p>SQL, MySQL, MongoDB</p>
-										<div class="single-progress-txt">
-											<div class="progress ">
-											   <!-- <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="10" aria-valuemax="100" style="">
-												   
-											   </div> -->
-											</div>
-											<!-- <h3>70%</h3>	 -->
-										</div>
-									</div><!-- /.barWrapper -->
-									<div class="barWrapper">
-										<span class="progressText"> Miscellaneous</span>
-										<p>Building DeskTop Systems, Team Collaborations Systems (Jira,Github)</p>
-										<div class="single-progress-txt">
-											<div class="progress ">
-											   <!-- <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="10" aria-valuemax="100" style="">
-												    
-											   </div> -->
-											</div>
-											<!-- <h3>90%</h3>	 -->
-										</div>
-									</div><!-- /.barWrapper -->
-								</div>
-							</div>
-						</div><!-- /.row -->
-					</div>	<!-- /.container -->		
-				</div><!-- /.skill-content-->
-
-		</section><!--/.skills-->
-		<!--skills end -->
-
-
-		<!--education start -->
-		<section id="education" class="education">
-			<div class="section-heading text-center">
-				<h2>education</h2>
-			</div>
-			<div class="container">
-				<div class="education-horizontal-timeline">
-					<div class="row">
-						<div class="col-sm-4">
-							<div class="single-horizontal-timeline">
-								<div class="experience-time">
-									<h2>2011 - 2023</h2>
-									<h3>A Levels <span> </span> Computer Science</h3>
-								</div><!--/.experience-time-->
-								<div class="timeline-horizontal-border">
-									<i class="fa fa-circle" aria-hidden="true"></i>
-									<span class="single-timeline-horizontal"></span>
-								</div>
-								<div class="timeline">
-									<div class="timeline-content">
-										<h4 class="title">
-											Portsmouth Grammar School
-										</h4>
-										<h5>Portsmouth, UK</h5>
-										<p class="description">
-											I attended Portsmouth Grammar School from reception to sixth form, where I completed my GCSEs with grades ranging from 7-9s. For my A-Levels, I studied Computer Science, Physics, and Mathematics 
-										</p>
-									</div><!--/.timeline-content-->
-								</div><!--/.timeline-->
-							</div>
-						</div>
-						<div class="col-sm-4">
-							<div class="single-horizontal-timeline">
-								<div class="experience-time">
-									<h2>2023 - 2027</h2>
-									<h3>bachelor <span>of </span> computer science</h3>
-								</div><!--/.experience-time-->
-								<div class="timeline-horizontal-border">
-									<i class="fa fa-circle" aria-hidden="true"></i>
-									<span class="single-timeline-horizontal"></span>
-								</div>
-								<div class="timeline">
-									<div class="timeline-content">
-										<h4 class="title">
-											Sheffield  University
-										</h4>
-										<h5>Sheffield, UK</h5>
-										<p class="description">
-											Currently studying Computer Science with Software Engineering, Second year.
-										</p>
-									</div><!--/.timeline-content-->
-								</div><!--/.timeline-->
-							</div>
-						</div>
-						<div class="col-sm-4">
-							
-								<div class="single-horizontal-timeline">
-								<div class="experience-time">
-									<h2>.</h2>
-									<h3>. <span> </span> </h3>
-								</div> <!--/.experience-time -->
-								<div class="timeline-horizontal-border">
-									<i class="fa fa-circle" aria-hidden="true"></i>
-									<span class="single-timeline-horizontal spacial-horizontal-line
-									"></span>
-								</div>
-								<div class="timeline">
-									<div class="timeline-content">
-										<h4 class="title">
-											
-										</h4>
-										<h5>.</h5>
-										<p class="description">
-											
-										</p>
-									</div><!--/.timeline-content-->
-								</div> <!--/.timeline-->
-							</div> 
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</section><!--/.education-->
-		<!--education end -->
-
-
-		
-
-		<!--profiles start -->
-		<!-- <section id="profiles" class="profiles">
-			<div class="profiles-details">
-				<div class="section-heading text-center">
-					<h2>profiles</h2>
-				</div>
-				<div class="container">
-					<div class="profiles-content">
-						<div class="row">
-							<div class="col-sm-3">
-								<div class="single-profile">
-									<div class="profile-txt">
-										<a href=""><i class="flaticon-themeforest"></i></a>
-										<div class="profile-icon-name">themeforest</div>
-									</div>
-									<div class="single-profile-overlay">
-										<div class="profile-txt">
-											<a href=""><i class="flaticon-themeforest"></i></a>
-											<div class="profile-icon-name">themeforest</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="single-profile">
-									<div class="profile-txt">
-										<a href=""><i class="flaticon-dribbble"></i></a>
-										<div class="profile-icon-name">dribbble</div>
-									</div>
-									<div class="single-profile-overlay">
-										<div class="profile-txt">
-											<a href=""><i class="flaticon-dribbble"></i></a>
-											<div class="profile-icon-name">dribbble</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="single-profile">
-									<div class="profile-txt">
-										<a href=""><i class="flaticon-behance-logo"></i></a>
-										<div class="profile-icon-name">behance</div>
-									</div>
-									<div class="single-profile-overlay">
-										<div class="profile-txt">
-											<a href=""><i class="flaticon-behance-logo"></i></a>
-											<div class="profile-icon-name">behance</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="single-profile profile-no-border">
-									<div class="profile-txt">
-										<a href=""><i class="flaticon-github-logo"></i></a>
-										<div class="profile-icon-name">github</div>
-									</div>
-									<div class="single-profile-overlay">
-										<div class="profile-txt">
-											<a href=""><i class="flaticon-github-logo"></i></a>
-											<div class="profile-icon-name">github</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="profile-border"></div>
-						<div class="row">
-							<div class="col-sm-3">
-								<div class="single-profile">
-									<div class="profile-txt">
-										<a href=""><i class="flaticon-flickr-website-logo-silhouette"></i></a>
-										<div class="profile-icon-name">flickR</div>
-									</div>
-									<div class="single-profile-overlay">
-										<div class="profile-txt">
-											<a href=""><i class="flaticon-flickr-website-logo-silhouette"></i></a>
-											<div class="profile-icon-name">flickR</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="single-profile">
-									<div class="profile-txt">
-										<a href=""><i class="flaticon-smug"></i></a>
-										<div class="profile-icon-name">smungMung</div>
-									</div>
-									<div class="single-profile-overlay">
-										<div class="profile-txt">
-											<a href=""><i class="flaticon-smug"></i></a>
-											<div class="profile-icon-name">smungMung</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="single-profile">
-									<div class="profile-txt">
-										<a href=""><i class="flaticon-squarespace-logo"></i></a>
-										<div class="profile-icon-name">squareSpace</div>
-									</div>
-									<div class="single-profile-overlay">
-										<div class="profile-txt">
-											<a href=""><i class="flaticon-squarespace-logo"></i></a>
-											<div class="profile-icon-name">squareSpace</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-3">
-								<div class="single-profile profile-no-border">
-									<div class="profile-txt">
-										<a href=""><i class="flaticon-bitbucket-logotype-camera-lens-in-perspective"></i></a>
-										<div class="profile-icon-name">bitBucket</div>
-									</div>
-									<div class="single-profile-overlay">
-										<div class="profile-txt">
-											<a href=""><i class="flaticon-bitbucket-logotype-camera-lens-in-perspective"></i></a>
-											<div class="profile-icon-name">bitBucket</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</section>/.profiles -->
-		<!--profiles end -->
-
-		<!--portfolio start -->
-		<section id="portfolio" class="portfolio">
-			<div class="portfolio-details">
-				<div class="section-heading text-center">
-					<h2>portfolio</h2>
-					<p>Recent Projects</p>
-					<a href="https://github.com/SWE-SAM"><box-icon type='logo' name='github'></box-icon> </a>
-				</div>
-				<div class="container">
-					<div class="portfolio-content">
-						<div class="isotope">
-							<div class="row">
-
-								<div class="col-sm-4">
-									<div class="item">
-										<img src="assets/images/portfolio/animalai.png" alt="animalai"/>
-										<div class="isotope-overlay">
-											<a href="https://github.com/SWE-SAM/animal-vision-ai">
-												Azure AI API model trained and integrated.
-											</a>
-										</div><!-- /.isotope-overlay -->
-									</div><!-- /.item -->
-									<div class="item">
-										<img src="assets/images/portfolio/uidesign.png" alt="uidesign"/>
-										<div class="isotope-overlay">
-											<a href="https://github.com/JianFGO/Inventory-Management-System">
-												FrontEnd UI Design 
-											</a>
-										</div><!-- /.isotope-overlay -->
-									</div><!-- /.item -->
-								</div><!-- /.col -->
-
-								<div class="col-sm-4">
-									<div class="item">
-										<img src="assets/images/portfolio/Elanco.svg.png" alt="Elanco"/>
-										<div class="isotope-overlay">
-											<a href="https://github.com/SWE-SAM">
-												Front End Web Design for Elanco Project
-											</a>
-										</div><!-- /.isotope-overlay -->
-									</div><!-- /.item -->
-								</div><!-- /.col -->
-
-								<div class="col-sm-4">
-									<div class="item">
-										<img src="assets/images/portfolio/inventory.png" alt="inventory"/>
-										<div class="isotope-overlay">
-											<a href="https://github.com/JianFGO/Inventory-Management-System">
-												Full Stack Development inc. Laravel Framework and SQL 
-											</a>
-										</div><!-- /.isotope-overlay -->
-									</div><!-- /.item -->
-									<div class="item">
-										<img src="assets/images/portfolio/recipe.jpeg" alt="recipe"/>
-										<div class="isotope-overlay">
-											<a href="https://github.com/SWE-SAM/Recipe-Manager-Year2">
-												C# App Development
-											</a>
-										</div><!-- /.isotope-overlay -->
-									</div><!-- /.item -->
-								</div><!-- /.col -->
-							</div><!-- /.row -->
-						</div><!--/.isotope-->
-					</div><!--/.gallery-content-->
-				</div><!--/.container-->
-			</div><!--/.portfolio-details-->
-
-		</section><!--/.portfolio-->
-		<!--portfolio end -->
-
-		<!--clients start -->
-		
-
-		
-		<!--clients end -->
-
-		<!--contact start -->
-		<section id="contact" class="contact">
-			<div class="section-heading text-center">
-				<h2>contact me</h2>
-			</div>
-			<div class="container">
-				<div class="contact-content">
-					<div class="row">
-						<div class="col-md-offset-1 col-md-5 col-sm-6">
-							<div class="single-contact-box">
-								<div class="contact-form">
-									<form action="https://formspree.io/f/xrbpzkwz" method="POST">
-										<div class="row">
-											<div class="col-sm-6 col-xs-12">
-												<div class="form-group">
-													<input type="text" class="form-control" id="name" placeholder="Name*" name="name" required>
-												</div><!--/.form-group-->
-											</div><!--/.col-->
-											<div class="col-sm-6 col-xs-12">
-												<div class="form-group">
-													<input type="email" class="form-control" id="email" placeholder="Email*" name="email" required>
-												</div><!--/.form-group-->
-											</div><!--/.col-->
-										</div><!--/.row-->
-										<div class="row">
-											<div class="col-sm-12">
-												<div class="form-group">
-													<input type="text" class="form-control" id="subject" placeholder="Subject" name="subject">
-												</div><!--/.form-group-->
-											</div><!--/.col-->
-										</div><!--/.row-->
-										<div class="row">
-											<div class="col-sm-12">
-												<div class="form-group">
-													<textarea class="form-control" rows="8" id="comment" placeholder="Message" name="message" required></textarea>
-												</div><!--/.form-group-->
-											</div><!--/.col-->
-										</div><!--/.row-->
-										<div class="row">
-											<div class="col-sm-12">
-												<div class="single-contact-btn">
-													<button type="submit" class="contact-btn">Submit</button>
-												</div><!--/.single-contact-btn-->
-											</div><!--/.col-->
-										</div><!--/.row-->
-									</form><!--/form-->
-									
-								</div><!--/.contact-form-->
-							</div><!--/.single-contact-box-->
-						</div><!--/.col-->
-						<div class="col-md-offset-1 col-md-5 col-sm-6">
-							<div class="single-contact-box">
-								<div class="contact-adress">
-									<div class="contact-add-head">
-										<h3>Sam Tran</h3>
-										<p>CompSci Student, Software Intern</p>
-									</div>
-									<div class="contact-add-info">
-										
-										
-										<!-- <div class="single-contact-add-info">
-											<h3>website</h3>
-											<p>www.brownsine.com</p>
-										</div> -->
-									</div>
-								</div><!--/.contact-adress-->
-								<div class="hm-foot-icon">
-									<ul>
-										<li><a href="https://www.facebook.com/profile.php?id=100009874442944"><i class="fa fa-facebook"></i></a></li><!--/li-->
-										<li><a href="https://github.com/SWE-SAM"><i class="fa fa-dribbble"></i></a></li><!--/li-->
-										<li><a href="#"><i class="fa fa-twitter"></i></a></li><!--/li-->
-										<li><a href="https://www.linkedin.com/in/sam-tran-408110347/"><i class="fa fa-linkedin"></i></a></li><!--/li-->
-										<li><a href="https://www.instagram.com/sam.txn/"><i class="fa fa-instagram"></i></a></li><!--/li-->
-										<li><a href="https://github.com/SWE-SAM"><box-icon type='logo' name='github'></box-icon> </a></li>
-									</ul><!--/ul-->
-								</div><!--/.hm-foot-icon-->
-							</div><!--/.single-contact-box-->
-						</div><!--/.col-->
-					</div><!--/.row-->
-				</div><!--/.contact-content-->
-			</div><!--/.container-->
-
-		</section><!--/.contact-->
-		<!--contact end -->
-
-		<!--footer-copyright start-->
-		<footer id="footer-copyright" class="footer-copyright">
-			<div class="container">
-				<div class="hm-footer-copyright text-center">
-					<p>
-						&copy; copyright Sam Tran</a>
-					</p><!--/p-->
-				</div><!--/.text-center-->
-			</div><!--/.container-->
-
-			<div id="scroll-Top">
-				<div class="return-to-top">
-					<i class="fa fa-angle-up " id="scroll-top" ></i>
-				</div>
-				
-			</div><!--/.scroll-Top-->
-			
-        </footer><!--/.footer-copyright-->
-		<!--footer-copyright end-->
-		
-		<!-- Include all js compiled plugins (below), or include individual files as needed -->
-
-		<script src="assets/js/jquery.js"></script>
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-subtitle">
         
-        <!--modernizr.min.js-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-		
-		<!--bootstrap.min.js-->
-        <script src="assets/js/bootstrap.min.js"></script>
-		
-		<!-- bootsnav js -->
-		<script src="assets/js/bootsnav.js"></script>
-		
-		<!-- jquery.sticky.js -->
-		<script src="assets/js/jquery.sticky.js"></script>
-		
-		<!-- for progress bar start-->
+      </p>
 
-		<!-- progressbar js -->
-		<script src="assets/js/progressbar.js"></script>
+      <div class="row g-4 mt-2">
+        <div class="col-lg-6">
+          <div class="card-glass p-4 h-100">
+            <h3 class="h6 mb-3">Email</h3>
+            <p class="muted mb-3">
+              <a class="small-link" href="mailto:officialsamtran@hotmail.com">officialsamtran@hotmail.com</a>
+            </p>
 
-		<!-- appear js -->
-		<script src="assets/js/jquery.appear.js"></script>
+            <h3 class="h6 mb-3">Links</h3>
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-outline-glow btn-sm" href="https://github.com/SWE-SAM" target="_blank" rel="noopener">
+                <i class="bi bi-github me-1"></i> GitHub
+              </a>
+              <a class="btn btn-outline-glow btn-sm" href="https://www.linkedin.com/in/sam-tran-408110347/" target="_blank" rel="noopener">
+                <i class="bi bi-linkedin me-1"></i> LinkedIn
+              </a>
+              <a class="btn btn-outline-glow btn-sm" href="/assets/download/resume-web.pdf" target="_blank" rel="noopener">
+                <i class="bi bi-file-earmark-text me-1"></i> Resume
+              </a>
+            </div>
 
-		<!-- for progress bar end -->
+            <div class="divider"></div>
 
-		<!--owl.carousel.js-->
-        <script src="assets/js/owl.carousel.min.js"></script>
+            <p class="muted mb-0">
+              
+            </p>
+          </div>
+        </div>
 
+        <div class="col-lg-6">
+          <div class="card-glass p-4 h-100">
+            <h3 class="h6 mb-3"> Contact Form</h3>
+            <p class="muted mb-3"></p>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-		
-        
-        <!--Custom JS-->
-        <script src="assets/js/custom.js"></script>
-        
-    </body>
-	
+            <!-- Replace action with your real Formspree endpoint if you want -->
+            <form action="https://formspree.io/f/xrbpzkwz" method="POST">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label muted" for="name">Name</label>
+                  <input class="form-control" id="name" name="name" type="text" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label muted" for="email">Email</label>
+                  <input class="form-control" id="email" name="email" type="email" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label muted" for="subject">Subject</label>
+                  <input class="form-control" id="subject" name="subject" type="text">
+                </div>
+                <div class="col-12">
+                  <label class="form-label muted" for="message">Message</label>
+                  <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-accent" type="submit">
+                    <i class="bi bi-send me-2"></i>Send
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <div class="muted">© <span id="year"></span> Sam Tran</div>
+      <div class="d-flex gap-3">
+        <a class="small-link" href="#top">Back to top</a>
+        <a class="small-link" href="/assets/download/resume-web.pdf" target="_blank" rel="noopener">Resume</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
 </html>
